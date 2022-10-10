@@ -15,6 +15,11 @@ jobs:
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
 
+      - name: Install Dependencies
+        run: |
+            composer install
+            php yii migrate
+
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v20
         with:
@@ -25,3 +30,19 @@ jobs:
           version_label: Sample Application-1
           region: us-east-1
           deployment_package: deploy.zip
+#services:
+#  mysql:
+#    image: mysql:5.7
+#    env:
+#      MYSQL_DATABASE: test_db
+#      MYSQL_USER: user
+#      MYSQL_PASSWORD: password
+#      MYSQL_ROOT_PASSWORD: rootpassword
+#    ports:
+#      - 3306:3306
+#    options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+#    steps:
+#      - name: Set up MySQL
+#        run: |
+#          sudo /etc/init.d/mysql start
+#          mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
