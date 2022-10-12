@@ -18,7 +18,6 @@ jobs:
       - name: Install Dependencies
         run: |
             composer install
-            php yii migrate
 
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v20
