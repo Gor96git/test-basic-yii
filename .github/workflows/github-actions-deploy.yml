@@ -18,7 +18,16 @@ jobs:
       - name: Install Dependencies
         run: |
             composer install
-#            sudo php yii migrate --interactive=0
+
+      - name: Run string replace
+        uses: frabert/replace-string-action@master
+        id: format-time
+        with:
+           pattern: '[:\.]+'
+           string: "${{ steps.current-time.outputs.time }}"
+           replace-with: '-'
+           flags: 'g'
+
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v20
         with:
@@ -26,7 +35,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
           application_name: TestGithubAction
           environment_name: Testgithubaction-env
-          version_label: test-yii2-basic-2
+          version_label: "test-yii2-basic-${{ steps.format-time.outputs.replaced }}"
           region: us-east-1
           use_existing_version_if_available: true
           deployment_package: deploy.zip
