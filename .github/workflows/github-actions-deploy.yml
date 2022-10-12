@@ -28,8 +28,8 @@ jobs:
           environment_name: Testgithubaction-env
           version_label: test-yii2-basic-${{ steps.format-time.outputs.replaced }}
           region: us-east-1
-          deployment_package: deploy.zip
           use_existing_version_if_available: true
+          deployment_package: deploy.zip
 
       - name: Deployed!
         run: echo App deployed to ELB
