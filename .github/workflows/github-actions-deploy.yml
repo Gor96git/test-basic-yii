@@ -30,6 +30,14 @@ jobs:
           version_label: Sample Application-1
           region: us-east-1
           deployment_package: deploy.zip
+#
+#      - name: Deploy to production
+#        uses: appleboy/ssh-action@master
+#        with:
+#           username: root
+#           host: ec2-34-230-9-211.compute-1.amazonaws.com
+#           password: ${{ secrets.SSH_PASSWORD }}
+#           script: 'cd /var/www/html && ./server_deploy.sh'
 #services:
 #  mysql:
 #    image: mysql:5.7

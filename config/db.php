@@ -2,9 +2,9 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=127.0.0.1;dbname=yii2basic',
-    'username' => 'root',
-    'password' => 'password',
+    'dsn' => 'mysql:host=database-dev.cjjiktyyfy1l.us-east-1.rds.amazonaws.com;dbname=dbadmin-dev',
+    'username' => 'admin',
+    'password' => '2d84DbUntPGbwS65',
     'charset' => 'utf8',
 
     // Schema cache options (for production environment)
