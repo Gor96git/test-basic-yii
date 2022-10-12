@@ -26,8 +26,8 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
           application_name: TestGithubAction
           environment_name: Testgithubaction-env
+          version_label: Sample Application-1
           region: us-east-1
-          deployment_package: deploy.zip
 #
 #      - name: Deploy to production
 #        uses: appleboy/ssh-action@master
