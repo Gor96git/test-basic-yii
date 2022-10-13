@@ -20,7 +20,7 @@ jobs:
             composer install
 
       - name: Get timestamp
-        uses: gerred/actions/current-time@master
+        uses: gerred/current-time@v1.0.0
         id: current-time
 
       - name: Run string replace
